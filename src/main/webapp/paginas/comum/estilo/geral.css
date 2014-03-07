@@ -1,0 +1,23 @@
+.ui-widget,.ui-widget .ui-widget .ui-panel-title .ui-widget-content {
+    font-size: 90% !important; color:red;
+}
+
+label,input,button {
+	margin: 6px;
+}
+
+.ui-selectonemenu {
+    bottom: -5px !important;
+}
+
+.ui-layout-north {
+    z-index: 20 !important;
+    overflow: visible !important;
+}
+.ui-layout-north .ui-layout-unit-content {
+    overflow: visible !important;
+}
+
+.semBorda tr, td{
+	border:0 solid #FFFFFF;
+}
