@@ -9,6 +9,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import net.marcoreis.ecommerce.entidades.Categoria;
+import net.marcoreis.ecommerce.entidades.Produto;
 
 @Stateless
 public class CategoriaService {
@@ -28,7 +29,7 @@ public class CategoriaService {
         em.remove(categoria);
     }
 
-    public List<Categoria> carregarProdutosPorCategoria(Long idCategoria) {
+    public List<Produto> carregarProdutosPorCategoria(Long idCategoria) {
         String hql = "from Produto where categoria.id = :idCategoria";
         Query query = em.createQuery(hql);
         query.setParameter("idCategoria", idCategoria);
