@@ -1,5 +1,6 @@
 package net.marcoreis.ecommerce.entidades;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -12,7 +13,8 @@ import javax.persistence.NamedQuery;
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
 @NamedQuery(name = "usuario.consultaAcessoDia", query = "from Usuario where cast(ultimoLogin as date) = :data")
-public class Usuario {
+public class Usuario implements Serializable {
+    private static final long serialVersionUID = 1432553426294627255L;
     @Id
     @GeneratedValue
     private Long id;

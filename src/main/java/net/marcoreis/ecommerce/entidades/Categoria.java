@@ -1,5 +1,7 @@
 package net.marcoreis.ecommerce.entidades;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -7,7 +9,8 @@ import javax.persistence.NamedQuery;
 
 @Entity
 @NamedQuery(name = "categoria.consultaPelaDescricao", query = "from Categoria where descricao like :descricao")
-public class Categoria {
+public class Categoria implements Serializable {
+    private static final long serialVersionUID = 2403648184193644455L;
     private Long id;
     private String nome;
     private String descricao;

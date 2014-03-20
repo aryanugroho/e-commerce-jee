@@ -62,4 +62,9 @@ public class CategoriaBean extends BaseBean {
             errorMsg(e);
         }
     }
+
+    public void salvarJms() {
+        categoriaService.salvarJms(getCategoria());
+        infoMsg("Dados gravados com JMS");
+    }
 }
