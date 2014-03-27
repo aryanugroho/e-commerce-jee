@@ -249,13 +249,25 @@
 		<!-- <version>7.1.1</version> -->
 		<!-- </dependency> -->
 
+		<!-- <dependency> -->
+		<!-- <groupId>javaee</groupId> -->
+		<!-- <artifactId>javaee-api</artifactId> -->
+		<!-- <version>5</version> -->
+		<!-- <scope>provided</scope> -->
+		<!-- </dependency> -->
+
 		<dependency>
-			<groupId>javaee</groupId>
+			<groupId>javax</groupId>
 			<artifactId>javaee-api</artifactId>
-			<version>5</version>
+			<version>6.0</version>
 			<scope>provided</scope>
 		</dependency>
 
+		<dependency>
+			<groupId>org.json</groupId>
+			<artifactId>json</artifactId>
+			<version>20140107</version>
+		</dependency>
 
 	</dependencies>
 

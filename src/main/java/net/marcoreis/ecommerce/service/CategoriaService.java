@@ -7,6 +7,7 @@ import javax.annotation.Resource;
 import javax.ejb.Stateless;
 import javax.jms.Connection;
 import javax.jms.ConnectionFactory;
+import javax.jms.JMSException;
 import javax.jms.MapMessage;
 import javax.jms.MessageProducer;
 import javax.jms.Queue;
@@ -56,18 +57,28 @@ public class CategoriaService {
     }
 
     public void salvarJms(Categoria categoria) {
+        Session session = null;
         try {
             Connection connection = factory.createConnection();
-            Session session = connection.createSession(false,
-                    Session.AUTO_ACKNOWLEDGE);
+            session = connection.createSession(true, Session.AUTO_ACKNOWLEDGE);
             //
             MessageProducer producer = session.createProducer(queue);
             MapMessage message = session.createMapMessage();
             message.setString("nome", categoria.getNome());
             message.setString("descricao", categoria.getDescricao());
             producer.send(message);
+            session.commit();
+            if (!session.getTransacted()) {
+                throw new RuntimeException("Erro jms");
+            }
         } catch (Exception e) {
+            try {
+                session.rollback();
+            } catch (JMSException e1) {
+                e1.printStackTrace();
+            }
             logger.error(e);
+            throw new RuntimeException(e);
         }
     }
 

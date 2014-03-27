@@ -27,6 +27,9 @@ public class CategoriaListener implements MessageListener {
             Categoria categoria = new Categoria();
             categoria.setDescricao(valores.getString("descricao"));
             categoria.setNome(valores.getString("nome"));
+            if(valores.getString("nome").equals("Nome 2")){
+                throw new RuntimeException("Transacao desfeita");
+            }
             categoriaService.salvar(categoria);
         } catch (Exception e) {
             logger.error(e);
