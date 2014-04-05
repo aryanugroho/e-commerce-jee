@@ -12,8 +12,8 @@ public class RESTServices extends Application {
     private Set<Class<?>> classes = new HashSet();
 
     public RESTServices() {
-        // this.singletons.add(new UsuarioServiceREST());
         classes.add(UsuarioServiceREST.class);
+        classes.add(CategoriaServiceREST.class);
     }
 
     public Set<Class<?>> getClasses() {

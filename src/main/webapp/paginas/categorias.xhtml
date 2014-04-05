@@ -21,7 +21,8 @@
 				style="margin-left: 24%; margin-right: 24%;">
 
 				<p:dataTable var="item" value="#{categoriaBean.categorias}"
-					id="tabelaCategorias" paginator="true" rows="20" >
+					id="tabelaCategorias" paginator="true" rows="2"
+					paginatorAlwaysVisible="false"> 
 					<p:column headerText="Nome">
 						<h:outputText value="#{item.nome}" />
 					</p:column>
