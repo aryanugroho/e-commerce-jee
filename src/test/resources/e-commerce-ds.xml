@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<datasources xmlns="http://www.jboss.org/ironjacamar/schema">
+	<datasource jndi-name="java:jboss/datasources/ecommercedb"
+		enabled="true" use-java-context="true" pool-name="ecommercedb">
+		<connection-url>jdbc:hsqldb:file:~/e-commerce/db;shutdown=true;hsqldb.write_delay=false;
+		</connection-url>
+		<driver>hsqldb-2.3.2.jar</driver>
+		<security>
+			<user-name>sa</user-name>
+			<password></password>
+		</security>
+	</datasource>
+</datasources>

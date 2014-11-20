@@ -33,7 +33,7 @@ public class TesteInsereCliente {
         Cliente cliente = new Cliente();
         cliente.setEmail("jose@oracle.com");
         cliente.setNome("Jose Carlos");
-        cliente.setCpfCnpj("123456");
+        cliente.setCpfCnpj("1234568");
         em.persist(cliente);
         Assert.assertTrue("Cliente gravado com sucesso", cliente.getId() > 0);
     }

@@ -6,10 +6,11 @@
 	<persistence-unit name="e-commerce-pu" transaction-type="RESOURCE_LOCAL">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 		<class>net.marcoreis.ecommerce.entidades.Usuario</class>
+		<class>net.marcoreis.ecommerce.entidades.Cliente</class>
 		<properties>
 			<property name="hibernate.dialect" value="org.hibernate.dialect.HSQLDialect" />
 			<property name="hibernate.hbm2ddl.auto" value="update" />
-			<property name="hibernate.show_sql" value="false" />
+			<property name="hibernate.show_sql" value="true" />
 			<property name="hibernate.format_sql" value="true" />
 
 			<property name="javax.persistence.jdbc.driver" value="org.hsqldb.jdbcDriver" />
@@ -18,9 +19,6 @@
 			<property name="javax.persistence.jdbc.user" value="SA" />
 			<property name="javax.persistence.jdbc.password" value="" />
 
-			<property name="hibernate.search.default.directory_provider"
-				value="org.hibernate.search.store.FSDirectoryProvider" />
-			<property name="hibernate.search.default.indexBase" value="/var/lucene/indexes" />
 		</properties>
 	</persistence-unit>
 </persistence>

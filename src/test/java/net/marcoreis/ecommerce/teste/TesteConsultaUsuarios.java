@@ -35,6 +35,7 @@ public class TesteConsultaUsuarios {
         String queryJPA = "from Usuario";
         Query query = em.createQuery(queryJPA);
         List<Usuario> usuarios = query.getResultList();
+        System.out.println("================== JPQL ===================");
         for (Usuario usuario : usuarios) {
             System.out.println("Nome: " + usuario.getNome() + " ("
                     + usuario.getEmail() + ")");
@@ -46,7 +47,7 @@ public class TesteConsultaUsuarios {
         Query query = em.createNamedQuery("usuario.consultaAcessoDia");
         query.setParameter("data", new Date());
         List<Usuario> usuarios = query.getResultList();
-        System.out.println("=====================================");
+        System.out.println("================== NamedQuery ===================");
         for (Usuario usuario : usuarios) {
             System.out.println("ID: " + usuario.getId());
             System.out.println("Nome: " + usuario.getNome());
