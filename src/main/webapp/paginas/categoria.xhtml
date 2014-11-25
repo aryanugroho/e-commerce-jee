@@ -15,14 +15,14 @@
 		<h:form>
 			<p:messages id="messages" />
 
-			<p:spacer height="3px" />
+			<p:spacer height="30px" />
 
 			<p:panel header="Categoria"
 				style="margin-left: 24%; margin-right: 24%;">
 
 				<h:inputHidden value="#{categoriaBean.categoria.id}" />
 
-				<p:panelGrid columns="2">
+				<p:panelGrid columns="2" styleClass="semBorda">
 
 					<p:outputLabel value="ID:"
 						rendered="#{categoriaBean.categoria.id > 0}" />
@@ -30,10 +30,11 @@
 						rendered="#{categoriaBean.categoria.id > 0}" />
 
 					<p:outputLabel value="Nome:" />
-					<p:inputText value="#{categoriaBean.categoria.nome}" />
+					<p:inputText value="#{categoriaBean.categoria.nome}" size="50" />
 
 					<p:outputLabel value="Descrição:" />
-					<p:inputTextarea value="#{categoriaBean.categoria.descricao}" />
+					<p:inputTextarea value="#{categoriaBean.categoria.descricao}"
+						rows="5" cols="50" />
 
 				</p:panelGrid>
 
@@ -42,9 +43,8 @@
 				<f:facet name="footer">
 					<p:commandButton value="Salvar" ajax="false"
 						actionListener="#{categoriaBean.salvar()}" icon="ui-icon-disk" />
-					<p:commandButton value="Voltar" type="submit"
-						action="categorias" ajax="false"
-						icon="ui-icon-arrowreturnthick-1-w" />
+					<p:commandButton value="Voltar" type="submit" action="categorias"
+						ajax="false" icon="ui-icon-arrowreturnthick-1-w" />
 				</f:facet>
 			</p:panel>
 

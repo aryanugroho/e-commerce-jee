@@ -15,21 +15,21 @@
 		<h:form>
 			<p:messages id="messages" />
 
-			<p:spacer height="3px" />
+			<p:spacer height="30px" />
 
 			<p:panel header="Categorias"
 				style="margin-left: 24%; margin-right: 24%;">
 
 				<p:dataTable var="item" value="#{categoriaBean.categorias}"
-					id="tabelaCategorias" paginator="true" rows="2"
-					paginatorAlwaysVisible="false"> 
+					id="tabelaCategorias" paginator="true" rows="10"
+					paginatorPosition="bottom" paginatorAlwaysVisible="false">
 					<p:column headerText="Nome">
 						<h:outputText value="#{item.nome}" />
 					</p:column>
 					<p:column headerText="Descrição">
 						<h:outputText value="#{item.descricao}" />
 					</p:column>
-					<p:column style="width: 50px;">
+					<p:column style="width: 85px;">
 						<p:commandButton type="submit"
 							action="#{categoriaBean.editar(item)}" icon="ui-icon-pencil"
 							ajax="false" />

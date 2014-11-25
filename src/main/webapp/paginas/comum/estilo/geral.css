@@ -1,23 +1,94 @@
-.ui-widget,.ui-widget .ui-widget .ui-panel-title .ui-widget-content {
-    font-size: 90% !important; color:red;
+/*
+@import url(http://fonts.googleapis.com/css?family=Lato:300,400,700);
+*/
+.ui-widget,.ui-widget .ui-widget .ui-panel-title .ui-column-title {
+	font-size: 90% !important;
+}
+
+.ui-selectlistbox-item {
+	font-size: 90% !important;
 }
 
 label,input,button {
-	margin: 6px;
+	margin-left: 6px;
 }
 
 .ui-selectonemenu {
-    bottom: -5px !important;
+	bottom: -5px !important;
 }
 
-.ui-layout-north {
-    z-index: 20 !important;
-    overflow: visible !important;
-}
-.ui-layout-north .ui-layout-unit-content {
-    overflow: visible !important;
+#header {
+	margin: 0;
+	outline: 0 none;
+	text-align: center;
+	padding: 10px;
+	background-color: #eeeeee;
+	vertical-align: baseline;
 }
 
-.semBorda tr, td{
-	border:0 solid #FFFFFF;
+ul.menu,ul.menu li {
+	display: inline;
+	font-family: 'Lato', Helvetica;
+	padding-left: 10px;
+	padding-right: 10px;
+	letter-spacing: 1px;
+}
+
+ul.menu-vertical,ul.menu-vertical li {
+	display: block;
+	font-size: 90% !important;
+	font-family: 'Lato', Helvetica;
+	padding-left: 10px;
+	padding-right: 10px;
+	letter-spacing: 1px;
+}
+
+.link,a.link:visited  a.link:visited {
+	text-decoration: none;
+	font-weight: bold;
+	color: #333333;
+	font-family: Lato, Helvetica;
+}
+
+.linkEsquerdo,a.link:visited  a.link:visited {
+	text-decoration: none;
+	color: #333333;
+	font-family: Lato, Helvetica;
+}
+
+#footer {
+	position: fixed;
+	bottom: 0;
+	height: 40px;
+	margin-top: 40px;
+	width: 100%;
+	text-align: center;
+	font-family: Lato, Helvetica;
+	bottom: 0;
+}
+
+.content {
+	padding: 10px;
+	padding-bottom: 60px;
+}
+
+#painelCentro {
+	width: auto;
+	padding: 2px 10px;
+	text-align: justify;
+	margin-left: 300px;
+	/*border: 2px solid;*/
+}
+
+#painelEsquerdo {
+	position: absolute;
+	width: auto;
+	float: left;
+	width: 350px;
+	top: 60px;
+	left: 5px;
+}
+
+.semBorda tr, .semBorda td {
+    border-style: none !important
 }

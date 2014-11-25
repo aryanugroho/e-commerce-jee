@@ -3,7 +3,6 @@ package net.marcoreis.ecommerce.service;
 import java.util.Collection;
 import java.util.List;
 
-import javax.annotation.Resource;
 import javax.ejb.Stateless;
 import javax.jms.Connection;
 import javax.jms.ConnectionFactory;
@@ -27,10 +26,10 @@ public class CategoriaService {
     private EntityManager em;
     private static Logger logger = Logger.getLogger(CategoriaService.class);
 
-    @Resource(mappedName = "java:/ConnectionFactory")
-    private ConnectionFactory factory;
-    @Resource(mappedName = "java:/queue/test")
-    private Queue queue;
+    // @Resource(mappedName = "java:/ConnectionFactory")
+    // private ConnectionFactory factory;
+    // @Resource(mappedName = "java:/queue/test")
+    // private Queue queue;
 
     public void salvar(Categoria categoria) {
         categoria = em.merge(categoria);
@@ -56,30 +55,30 @@ public class CategoriaService {
         return em.find(Categoria.class, id);
     }
 
-    public void salvarJms(Categoria categoria) {
-        Session session = null;
-        try {
-            Connection connection = factory.createConnection();
-            session = connection.createSession(true, Session.AUTO_ACKNOWLEDGE);
-            //
-            MessageProducer producer = session.createProducer(queue);
-            MapMessage message = session.createMapMessage();
-            message.setString("nome", categoria.getNome());
-            message.setString("descricao", categoria.getDescricao());
-            producer.send(message);
-            session.commit();
-            if (!session.getTransacted()) {
-                throw new RuntimeException("Erro jms");
-            }
-        } catch (Exception e) {
-            try {
-                session.rollback();
-            } catch (JMSException e1) {
-                e1.printStackTrace();
-            }
-            logger.error(e);
-            throw new RuntimeException(e);
-        }
-    }
+    // public void salvarJms(Categoria categoria) {
+    // Session session = null;
+    // try {
+    // Connection connection = factory.createConnection();
+    // session = connection.createSession(true, Session.AUTO_ACKNOWLEDGE);
+    // //
+    // MessageProducer producer = session.createProducer(queue);
+    // MapMessage message = session.createMapMessage();
+    // message.setString("nome", categoria.getNome());
+    // message.setString("descricao", categoria.getDescricao());
+    // producer.send(message);
+    // session.commit();
+    // if (!session.getTransacted()) {
+    // throw new RuntimeException("Erro jms");
+    // }
+    // } catch (Exception e) {
+    // try {
+    // session.rollback();
+    // } catch (JMSException e1) {
+    // e1.printStackTrace();
+    // }
+    // logger.error(e);
+    // throw new RuntimeException(e);
+    // }
+    // }
 
 }
