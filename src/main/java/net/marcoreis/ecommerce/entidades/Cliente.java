@@ -5,7 +5,7 @@ import javax.persistence.Entity;
 
 @Entity
 public class Cliente extends Usuario {
-    @Column(unique = true, nullable = false)
+    @Column(nullable = false)
     private String cpfCnpj;
 
     public void setCpfCnpj(String cpfCnpj) {
