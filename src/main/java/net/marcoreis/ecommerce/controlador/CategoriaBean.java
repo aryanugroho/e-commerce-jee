@@ -17,6 +17,12 @@ public class CategoriaBean extends BaseBean {
     @Inject
     private CategoriaService categoriaService;
 
+    @PostConstruct
+    public void init() {
+        carregarCategorias();
+        categoria = new Categoria();
+    }
+
     public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
     }
@@ -27,12 +33,6 @@ public class CategoriaBean extends BaseBean {
 
     public Collection<Categoria> getCategorias() {
         return categorias;
-    }
-
-    @PostConstruct
-    public void init() {
-        carregarCategorias();
-        categoria = new Categoria();
     }
 
     public void salvar() {
