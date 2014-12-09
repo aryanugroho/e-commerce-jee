@@ -1,5 +1,8 @@
 package net.marcoreis.ecommerce.messaging;
 
+import javax.ejb.ActivationConfigProperty;
+import javax.ejb.MessageDriven;
+import javax.inject.Inject;
 import javax.jms.MapMessage;
 import javax.jms.Message;
 import javax.jms.MessageListener;
@@ -9,13 +12,13 @@ import net.marcoreis.ecommerce.service.CategoriaService;
 
 import org.apache.log4j.Logger;
 
-//@MessageDriven(mappedName = "jms/CategoriaQueue", activationConfig = {
+//@MessageDriven(mappedName = "CategoriaMDB", activationConfig = {
 //        @ActivationConfigProperty(propertyName = "acknowledgeMode", propertyValue = "Auto-acknowledge"),
-//        @ActivationConfigProperty(propertyName = "destination", propertyValue = "java:/queue/test"),
+//        @ActivationConfigProperty(propertyName = "destination", propertyValue = "java:jboss/exported/jms/queue/Categoria"),
 //        @ActivationConfigProperty(propertyName = "destinationType", propertyValue = "javax.jms.Queue") })
 public class CategoriaListener implements MessageListener {
     private static Logger logger = Logger.getLogger(CategoriaListener.class);
-    // @Inject
+    @Inject
     private CategoriaService categoriaService;
 
     public void onMessage(Message message) {
@@ -28,6 +31,7 @@ public class CategoriaListener implements MessageListener {
                 throw new RuntimeException("Transacao desfeita");
             }
             categoriaService.salvar(categoria);
+            logger.info("Dados gravados pelo MDB");
         } catch (Exception e) {
             logger.error(e);
         }

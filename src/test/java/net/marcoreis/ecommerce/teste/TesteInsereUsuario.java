@@ -41,4 +41,27 @@ public class TesteInsereUsuario {
         em.persist(usuario);
         Assert.assertTrue("Usuário gravado com sucesso", usuario.getId() > 0);
     }
+
+    @Test
+    public void inserirUsuario2() {
+        Usuario usuario = new Usuario();
+        usuario.setEmail("diego@live.com");
+        usuario.setNome("Diego Sousa");
+        Date data = new Date();
+        usuario.setUltimoLogin(data);
+        em.persist(usuario);
+        Assert.assertTrue("Usuário gravado com sucesso", usuario.getId() > 0);
+    }
+    
+    @Test
+    public void inserirUsuario3() {
+        Usuario usuario = new Usuario();
+        usuario.setEmail("mariana@yahoo.com");
+        usuario.setNome("Mariana Reis");
+        Date data = new Date();
+        usuario.setUltimoLogin(data);
+        em.persist(usuario);
+        Assert.assertTrue("Usuário gravado com sucesso", usuario.getId() > 0);
+    }
+
 }

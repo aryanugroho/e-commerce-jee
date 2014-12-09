@@ -33,6 +33,13 @@ public class UsuarioServiceREST {
     }
 
     @GET
+    @Produces({ MediaType.APPLICATION_JSON })
+    @Path("/buscar-pelo-id/{id}")
+    public Usuario buscarPeloId(@PathParam("id") String id) {
+        return usuarioService.buscarPeloId(new Long(id));
+    }
+
+    @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/consultarTodos")
     public Collection<Usuario> consultarTodos() {
@@ -55,6 +62,7 @@ public class UsuarioServiceREST {
             logger.info("JSON -> Objeto gravado com sucesso");
             return "1";
         } catch (Exception e) {
+            logger.error(e);
             return "0";
         }
     }
