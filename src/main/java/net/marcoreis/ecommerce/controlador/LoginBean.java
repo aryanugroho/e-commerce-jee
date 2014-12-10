@@ -1,5 +1,8 @@
 package net.marcoreis.ecommerce.controlador;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
@@ -8,13 +11,12 @@ import javax.inject.Named;
 import net.marcoreis.ecommerce.entidades.Usuario;
 import net.marcoreis.ecommerce.service.UsuarioService;
 
-import org.apache.log4j.Logger;
-
 @Named
 @SessionScoped
 public class LoginBean extends BaseBean {
     private static final long serialVersionUID = 4169068378414919948L;
-    protected static final Logger logger = Logger.getLogger(LoginBean.class);
+    protected static final Logger logger = Logger.getLogger(LoginBean.class
+            .getCanonicalName());
     @Inject
     private UsuarioService usuarioService;
 
@@ -31,7 +33,7 @@ public class LoginBean extends BaseBean {
             }
         } catch (Exception e) {
             errorMsg("Usuário inválido");
-            logger.error(e);
+            logger.log(Level.SEVERE, e.getMessage());
             return null;
         }
     }

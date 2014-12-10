@@ -1,6 +1,7 @@
 package net.marcoreis.ecommerce.webservice;
 
 import java.util.Collection;
+import java.util.logging.Logger;
 
 import javax.inject.Inject;
 import javax.ws.rs.GET;
@@ -11,12 +12,10 @@ import javax.ws.rs.core.MediaType;
 import net.marcoreis.ecommerce.entidades.Categoria;
 import net.marcoreis.ecommerce.service.CategoriaService;
 
-import org.apache.log4j.Logger;
-
 @Path("/categoria")
 public class CategoriaServiceREST {
     protected static final Logger logger = Logger
-            .getLogger(CategoriaServiceREST.class);
+            .getLogger(CategoriaServiceREST.class.getCanonicalName());
 
     @Inject
     private CategoriaService categoriaService;

@@ -1,17 +1,18 @@
 package net.marcoreis.ecommerce.controlador;
 
 import java.io.Serializable;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 
 import net.marcoreis.ecommerce.entidades.Usuario;
 
-import org.apache.log4j.Logger;
-
 public class BaseBean implements Serializable {
     private static final long serialVersionUID = -5895396595360064610L;
-    protected static final Logger logger = Logger.getLogger(BaseBean.class);
+    protected static Logger logger = Logger.getLogger(BaseBean.class
+            .getCanonicalName());
     private Usuario usuario;
 
     public void setUsuario(Usuario usuario) {
@@ -28,7 +29,7 @@ public class BaseBean implements Serializable {
     }
 
     protected void errorMsg(Throwable t) {
-        logger.error(t);
+        logger.log(Level.SEVERE, t.getMessage());
         FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR,
                 t.getMessage(), "Erro");
         FacesContext.getCurrentInstance().addMessage(null, msg);

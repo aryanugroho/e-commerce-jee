@@ -3,8 +3,10 @@ package net.marcoreis.ecommerce.controlador;
 import java.util.Collection;
 
 import javax.annotation.PostConstruct;
+import javax.annotation.Resource;
 import javax.enterprise.inject.Model;
 import javax.inject.Inject;
+import javax.jms.ConnectionFactory;
 
 import net.marcoreis.ecommerce.entidades.Categoria;
 import net.marcoreis.ecommerce.service.CategoriaService;

@@ -2,15 +2,9 @@ package net.marcoreis.ecommerce.service;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.logging.Logger;
 
 import javax.ejb.Stateless;
-import javax.jms.Connection;
-import javax.jms.ConnectionFactory;
-import javax.jms.JMSException;
-import javax.jms.MapMessage;
-import javax.jms.MessageProducer;
-import javax.jms.Queue;
-import javax.jms.Session;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
@@ -18,13 +12,12 @@ import javax.persistence.Query;
 import net.marcoreis.ecommerce.entidades.Categoria;
 import net.marcoreis.ecommerce.entidades.Produto;
 
-import org.apache.log4j.Logger;
-
 @Stateless
 public class CategoriaService {
     @PersistenceContext(unitName = "e-commerce-pu")
     private EntityManager em;
-    private static Logger logger = Logger.getLogger(CategoriaService.class);
+    private static Logger logger = Logger.getLogger(CategoriaService.class
+            .getCanonicalName());
 
     // @Resource(mappedName = "java:/ConnectionFactory")
     // private ConnectionFactory factory;

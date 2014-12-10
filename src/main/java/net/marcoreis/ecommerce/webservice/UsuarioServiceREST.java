@@ -1,6 +1,8 @@
 package net.marcoreis.ecommerce.webservice;
 
 import java.util.Collection;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
@@ -14,13 +16,12 @@ import javax.ws.rs.core.MediaType;
 import net.marcoreis.ecommerce.entidades.Usuario;
 import net.marcoreis.ecommerce.service.UsuarioService;
 
-import org.apache.log4j.Logger;
 import org.json.JSONObject;
 
 @Path("/usuario")
 public class UsuarioServiceREST {
     protected static final Logger logger = Logger
-            .getLogger(UsuarioServiceREST.class);
+            .getLogger(UsuarioServiceREST.class.getCanonicalName());
 
     @Inject
     private UsuarioService usuarioService;
@@ -62,7 +63,7 @@ public class UsuarioServiceREST {
             logger.info("JSON -> Objeto gravado com sucesso");
             return "1";
         } catch (Exception e) {
-            logger.error(e);
+            logger.log(Level.SEVERE, e.getMessage());
             return "0";
         }
     }
