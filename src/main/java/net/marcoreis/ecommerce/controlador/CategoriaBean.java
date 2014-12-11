@@ -1,6 +1,7 @@
 package net.marcoreis.ecommerce.controlador;
 
 import java.util.Collection;
+import java.util.logging.Level;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
@@ -40,7 +41,9 @@ public class CategoriaBean extends BaseBean {
     public void salvar() {
         try {
             categoriaService.salvar(getCategoria());
-            infoMsg("Dados gravados com sucesso");
+            String msg = "Dados gravados com sucesso";
+            infoMsg(msg);
+            logger.log(Level.INFO, msg);
         } catch (Exception e) {
             errorMsg(e);
         }
