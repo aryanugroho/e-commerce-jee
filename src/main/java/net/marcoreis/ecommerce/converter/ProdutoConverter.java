@@ -1,5 +1,6 @@
-package net.marcoreis.ecommerce.controlador;
+package net.marcoreis.ecommerce.converter;
 
+import javax.faces.bean.ManagedBean;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
@@ -9,9 +10,9 @@ import javax.inject.Inject;
 import net.marcoreis.ecommerce.entidades.Produto;
 import net.marcoreis.ecommerce.service.ProdutoService;
 
+@ManagedBean
 @FacesConverter(forClass = Produto.class)
 public class ProdutoConverter implements Converter {
-
     @Inject
     private ProdutoService produtoService;
 
