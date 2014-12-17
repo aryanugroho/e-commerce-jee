@@ -23,7 +23,7 @@ public class CategoriaConverter implements Converter {
             Categoria categoria = categoriaService.buscarPorId(id);
             return categoria;
         } catch (Exception e) {
-            return null;
+            return new Categoria();
         }
     }
 

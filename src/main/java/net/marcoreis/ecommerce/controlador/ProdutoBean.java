@@ -37,6 +37,9 @@ public class ProdutoBean extends BaseBean {
     }
 
     public Produto getProduto() {
+        if (produto == null) {
+            produto = new Produto();
+        }
         return produto;
     }
 
