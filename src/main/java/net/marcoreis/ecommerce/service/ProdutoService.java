@@ -24,8 +24,8 @@ public class ProdutoService {
         return em.find(Produto.class, id);
     }
 
-    public void salvar(Produto produto) {
-        produto = em.merge(produto);
+    public Produto salvar(Produto produto) {
+        return em.merge(produto);
     }
 
 }

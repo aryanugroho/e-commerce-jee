@@ -45,7 +45,7 @@ public class ProdutoBean extends BaseBean {
 
     public void salvar() {
         try {
-            produtoService.salvar(getProduto());
+            produto = produtoService.salvar(getProduto());
             String msg = "Dados gravados com sucesso";
             infoMsg(msg);
             logger.log(Level.INFO, msg);
