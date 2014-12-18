@@ -38,7 +38,7 @@ public class CategoriaBean extends BaseBean {
 
     public void salvar() {
         try {
-            categoriaService.salvar(getCategoria());
+            categoria = categoriaService.salvar(getCategoria());
             String msg = "Dados gravados com sucesso";
             infoMsg(msg);
             logger.log(Level.INFO, msg);

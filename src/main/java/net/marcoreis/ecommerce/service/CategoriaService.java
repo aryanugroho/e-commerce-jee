@@ -5,8 +5,6 @@ import java.util.List;
 import java.util.logging.Logger;
 
 import javax.ejb.Stateless;
-import javax.faces.bean.ManagedBean;
-import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
@@ -26,8 +24,8 @@ public class CategoriaService {
     // @Resource(mappedName = "java:/queue/test")
     // private Queue queue;
 
-    public void salvar(Categoria categoria) {
-        categoria = em.merge(categoria);
+    public Categoria salvar(Categoria categoria) {
+        return em.merge(categoria);
     }
 
     public Collection<Categoria> consultarTodas() {

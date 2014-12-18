@@ -28,14 +28,13 @@
 			<p:panel header="Produto" styleClass="semBorda"
 				style="margin-left: 14%; margin-right: 14%;">
 
-				<h:inputHidden value="#{produtoBean.produto.id}" id="hiddenProduto"
-					rendered="#{produtoBean.produto.id > 0}" />
+				<h:inputHidden value="#{produtoBean.produto.id}" id="hiddenIdProduto" />
 
 				<p:panelGrid columns="2">
 
 					<p:outputLabel value="ID:" rendered="#{produtoBean.produto.id > 0}" />
 					<p:inputText value="#{produtoBean.produto.id}" disabled="true"
-						id="txtProduto" rendered="#{produtoBean.produto.id > 0}" />
+						id="txtIdProduto" rendered="#{produtoBean.produto.id > 0}" />
 
 					<p:outputLabel value="Nome:" />
 					<p:inputText value="#{produtoBean.produto.nome}" size="50"
@@ -52,32 +51,6 @@
 						<f:validateDoubleRange minimum="1" for="txtValor" />
 					</p:inputText>
 
-					<!-- 					<p:outputLabel value="Descrição:" /> -->
-					<!-- 					<p:inputTextarea value="#{produtoBean.produto.descricao}" cols="50" /> -->
-
-					<!-- 					<p:outputLabel value="Especificação da loja" /> -->
-					<!-- 					<p:editor value="#{produtoBean.produto.especificacaoLoja}" /> -->
-
-					<!-- 					<p:outputLabel value="Arquivo da especificação do fabricante" /> -->
-					<!-- 					<p:fileUpload value="#{produtoBean.especificacaoFabricante}" -->
-					<!-- 						id="uploadEspecificacaoFabricante" mode="simple" /> -->
-
-					<!-- 					<p:outputLabel value="Download da especificação do fabricante" /> -->
-					<!-- 					<p:commandButton icon="ui-icon-arrowthickstop-1-s" ajax="false"> -->
-					<!-- 						<p:fileDownload -->
-					<!-- 							value="#{produtoBean.downloadEspecificacaoFabricante}" /> -->
-					<!-- 					</p:commandButton> -->
-
-					<!-- 					<p:outputLabel value="Arquivo da foto" /> -->
-					<!-- 					<p:fileUpload value="#{produtoBean.foto}" mode="simple" -->
-					<!-- 						id="uploadfotoProduto" /> -->
-
-					<!-- 					<p:outputLabel value="Foto" rendered="#{produtoBean.existeFoto}" /> -->
-					<!-- 					<p:graphicImage cache="false" rendered="#{produtoBean.existeFoto}" -->
-					<!-- 						value="#{imagemProdutoBean.conteudoImagem}"> -->
-					<!-- 						<f:param value="#{produtoBean.produto.id}" name="id" /> -->
-					<!-- 					</p:graphicImage> -->
-
 					<p:outputLabel value="Categoria:" />
 					<p:selectOneMenu value="#{produtoBean.produto.categoria}"
 						converter="#{categoriaConverter}" required="true"
@@ -92,9 +65,11 @@
 				<p:spacer height="6px" />
 
 				<f:facet name="footer">
+
 					<p:commandButton value="Salvar" ajax="false"
 						actionListener="#{produtoBean.salvar}" icon="ui-icon-disk"
-						update="messages,txtProduto,hiddenProduto" />
+						update="messages,txtIdProduto,hiddenIdProduto" />
+
 					<p:commandButton value="Voltar"
 						action="produtos?faces-redirect=true" ajax="false"
 						immediate="true" icon="ui-icon-arrowreturnthick-1-w" />
