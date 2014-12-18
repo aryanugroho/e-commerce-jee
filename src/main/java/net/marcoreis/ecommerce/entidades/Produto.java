@@ -1,5 +1,6 @@
 package net.marcoreis.ecommerce.entidades;
 
+import javax.persistence.Cacheable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -8,6 +9,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 
+@Cacheable
 @Entity
 @NamedQueries({
         @NamedQuery(name = "produto.consultaTotal", query = "select count(p) from Produto p"),

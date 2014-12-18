@@ -34,7 +34,7 @@ public class VendaBean extends BaseBean {
 
     @PostConstruct
     public void init() {
-        logger.info("init");
+        itens = new ArrayList<ItemVenda>();
         produto = new Produto();
         carregarProdutos();
     }
@@ -44,8 +44,9 @@ public class VendaBean extends BaseBean {
         item.setProduto(getProduto());
         item.setValorUnitario(getValorUnitario());
         item.setValorTotal(getValorTotal());
+        item.setQuantidade(getQuantidade());
         getItens().add(item);
-        infoMsg("Item adicionado");
+        infoMsg("Item adicionado [" + getProduto().getNome() + "]");
     }
 
     public void carregarProdutos() {
@@ -73,9 +74,6 @@ public class VendaBean extends BaseBean {
     }
 
     public Collection<ItemVenda> getItens() {
-        if (itens == null) {
-            itens = new ArrayList<ItemVenda>();
-        }
         return itens;
     }
 
@@ -90,9 +88,12 @@ public class VendaBean extends BaseBean {
     public void salvar() {
         try {
             Venda venda = new Venda();
-            venda.setItens(getItens());
             venda.setData(new Date());
-            vendaService.salvar(venda);
+            venda = vendaService.salvar(venda);
+            for (ItemVenda item : getItens()) {
+                item.setVenda(venda);
+                vendaService.salvar(item);
+            }
             infoMsg("Venda gravada com sucesso");
         } catch (Exception e) {
             logger.log(Level.SEVERE, e.toString(), e);

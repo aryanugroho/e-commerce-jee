@@ -16,6 +16,7 @@ public class ItemVenda {
     private Double valorTotal;
     @ManyToOne
     private Venda venda;
+    private Integer quantidade;
 
     public void setId(Long id) {
         this.id = id;
@@ -55,5 +56,13 @@ public class ItemVenda {
 
     public Venda getVenda() {
         return venda;
+    }
+
+    public void setQuantidade(Integer quantidade) {
+        this.quantidade = quantidade;
+    }
+
+    public Integer getQuantidade() {
+        return quantidade;
     }
 }

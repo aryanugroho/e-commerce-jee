@@ -45,7 +45,10 @@
 					<p:column headerText="Nome">
 						<h:outputText value="#{item.produto.nome}" />
 					</p:column>
-					<p:column headerText="Valor">
+					<p:column headerText="Quantidade">
+						<h:outputText value="#{item.quantidade}" />
+					</p:column>
+					<p:column headerText="Unitário">
 						<h:outputText value="#{item.produto.preco}">
 							<f:convertNumber locale="pt_BR" type="currency" />
 						</h:outputText>
