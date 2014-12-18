@@ -12,7 +12,7 @@
 <ui:composition template="comum/template.xhtml">
 
 	<ui:define name="body">
-		<h:form>
+		<h:form id="formulario">
 			<p:messages id="messages" />
 
 			<p:spacer height="3px" />
@@ -22,15 +22,24 @@
 				<p:panelGrid columns="2" styleClass="semBorda">
 
 					<p:outputLabel value="Produto:" />
-					<p:selectOneMenu value="#{vendaBean.produto}">
+					<p:selectOneMenu value="#{vendaBean.produto}" label="Produto"
+						converter="#{produtoConverter}">
 						<f:selectItem itemLabel="" itemValue="" />
 						<f:selectItems value="#{vendaBean.produtos}" var="item"
 							itemLabel="#{item.nome}" itemValue="#{item}" />
 					</p:selectOneMenu>
 
+					<p:outputLabel value="Quantidade:" />
+					<p:inputText value="#{vendaBean.quantidade}" />
+
 				</p:panelGrid>
 
-				<p:spacer height="6px" />
+				<div style="padding: 10px;">
+					<p:commandButton actionListener="#{vendaBean.adicionarItem()}"
+						value="Adicionar" type="submit" update="tabelaItens,messages" />
+				</div>
+
+				<p:separator />
 
 				<p:dataTable var="item" value="#{vendaBean.itens}" id="tabelaItens">
 					<p:column headerText="Nome">
@@ -45,8 +54,8 @@
 
 
 				<f:facet name="footer">
-					<p:commandButton value="Salvar" update="tabelaItens" ajax="false"
-						actionListener="#{vendaBean.adicionarItem()}" icon="ui-icon-disk" />
+					<p:commandButton value="Salvar" update="messages"
+						actionListener="#{vendaBean.salvar()}" icon="ui-icon-disk" />
 				</f:facet>
 
 			</p:panel>

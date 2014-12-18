@@ -18,10 +18,9 @@ public class ProdutoConverter implements Converter {
 
     public Object getAsObject(FacesContext context, UIComponent component,
             String value) {
-        Produto produto;
         try {
             Long id = Long.parseLong(value);
-            produto = produtoService.consultarPeloId(id);
+            Produto produto = produtoService.consultarPeloId(id);
             return produto;
         } catch (Exception e) {
             return null;
@@ -30,9 +29,13 @@ public class ProdutoConverter implements Converter {
 
     public String getAsString(FacesContext context, UIComponent component,
             Object value) {
-        Produto p = (Produto) value;
-        String id = String.valueOf(p.getId());
-        return id;
+        try {
+            Produto p = (Produto) value;
+            String id = String.valueOf(p.getId());
+            return id;
+        } catch (Exception e) {
+            return null;
+        }
     }
 
 }

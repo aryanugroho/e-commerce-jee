@@ -83,4 +83,11 @@ public class Produto {
         this.preco = preco;
     }
 
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        Produto other = (Produto) obj;
+        return getId() == other.getId();
+    }
 }

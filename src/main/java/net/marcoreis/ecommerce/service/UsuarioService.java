@@ -32,8 +32,8 @@ public class UsuarioService {
         return em.createQuery("from Usuario").getResultList();
     }
 
-    public void salvar(Usuario usuario) {
-        em.merge(usuario);
+    public Usuario salvar(Usuario usuario) {
+        return em.merge(usuario);
     }
 
 }

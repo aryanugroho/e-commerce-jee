@@ -2,37 +2,50 @@ package net.marcoreis.ecommerce.controlador;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
+import java.util.logging.Level;
 
 import javax.annotation.PostConstruct;
-import javax.enterprise.context.SessionScoped;
-import javax.enterprise.inject.Model;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
 
 import net.marcoreis.ecommerce.entidades.ItemVenda;
 import net.marcoreis.ecommerce.entidades.Produto;
+import net.marcoreis.ecommerce.entidades.Venda;
 import net.marcoreis.ecommerce.service.ProdutoService;
+import net.marcoreis.ecommerce.service.VendaService;
 
-@Model
-@SessionScoped
+@ManagedBean
+@ViewScoped
 public class VendaBean extends BaseBean {
     private static final long serialVersionUID = 861905629535769221L;
     private Produto produto;
     private Collection<ItemVenda> itens;
     private Collection<Produto> produtos;
+    private Integer quantidade;
+    private Double valorUnitario;
+    private Double valorTotal;
+
     @Inject
     private ProdutoService produtoService;
+    @Inject
+    private VendaService vendaService;
 
     @PostConstruct
     public void init() {
+        logger.info("init");
         produto = new Produto();
-        itens = new ArrayList<ItemVenda>();
         carregarProdutos();
     }
 
     public void adicionarItem() {
         ItemVenda item = new ItemVenda();
         item.setProduto(getProduto());
+        item.setValorUnitario(getValorUnitario());
+        item.setValorTotal(getValorTotal());
         getItens().add(item);
+        infoMsg("Item adicionado");
     }
 
     public void carregarProdutos() {
@@ -60,6 +73,46 @@ public class VendaBean extends BaseBean {
     }
 
     public Collection<ItemVenda> getItens() {
+        if (itens == null) {
+            itens = new ArrayList<ItemVenda>();
+        }
         return itens;
+    }
+
+    public void setQuantidade(Integer quantidade) {
+        this.quantidade = quantidade;
+    }
+
+    public Integer getQuantidade() {
+        return quantidade;
+    }
+
+    public void salvar() {
+        try {
+            Venda venda = new Venda();
+            venda.setItens(getItens());
+            venda.setData(new Date());
+            vendaService.salvar(venda);
+            infoMsg("Venda gravada com sucesso");
+        } catch (Exception e) {
+            logger.log(Level.SEVERE, e.toString(), e);
+            errorMsg(e);
+        }
+    }
+
+    public void setValorTotal(Double valorTotal) {
+        this.valorTotal = valorTotal;
+    }
+
+    public void setValorUnitario(Double valorUnitario) {
+        this.valorUnitario = valorUnitario;
+    }
+
+    public Double getValorTotal() {
+        return valorTotal;
+    }
+
+    public Double getValorUnitario() {
+        return valorUnitario;
     }
 }
