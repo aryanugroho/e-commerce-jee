@@ -36,4 +36,16 @@ public class UsuarioService {
         return em.merge(usuario);
     }
 
+    public void removerPeloId(String id) {
+    }
+
+    public void atualizar(Usuario usuario) {
+        salvar(usuario);
+    }
+
+    public void inserir(Usuario usuario) {
+        // TODO Auto-generated method stub
+
+    }
+
 }
